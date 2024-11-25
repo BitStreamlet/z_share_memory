@@ -29,8 +29,7 @@ int main() {
     }
 
     Z_RAW("Sender process initialized (PID: %d)\n", getpid());
-    Z_RAW("Shared Memory IDs - FIFO: %d, Data: %d\n", 
-          shm.shm_id_fifo, shm.shm_id_data);
+    Z_RAW("Shared Memory ID: %d\n", shm.shm_id);
 
     // 发送多个数据包
     const char *test_messages[] = {
@@ -78,7 +77,7 @@ int main() {
     z_shared_memory_send(&shm, &end_header, sizeof(end_header), 1000);
 
     // 等待一会儿确保接收端能收到最后的消息
-    sleep(1);
+    sleep(5);
 
     // 作为创建者清理资源
     z_shared_memory_free(&shm, Z_SHM_CREATE);

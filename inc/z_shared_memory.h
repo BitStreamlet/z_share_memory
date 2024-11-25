@@ -19,11 +19,11 @@ extern "C" {
 
 // Shared memory structure
 struct z_shared_memory_struct {
-    struct z_kfifo_struct *p_fifo;    /* kfifo结构体指针 */
-    void *buffer_addr;                /* buffer共享内存地址 */
-    int shm_id_fifo;                  /* fifo结构体共享内存ID */
-    int shm_id_data;                  /* 数据buffer共享内存ID */
-    char name[64];                /* 共享内存名称 */
+    int  shm_id;
+    char name[64];                   /* 共享内存名称 */
+    int  fifo_buffer_offset;         /* fifo buffer在共享内存中的偏移 */
+    void *p_buf_addr;               /* 共享内存基地址 */ 
+    struct z_kfifo_struct *p_fifo;   /* kfifo结构体指针 */
 };
 
 // Initialize shared memory

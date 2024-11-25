@@ -29,8 +29,7 @@ int main() {
     }
 
     Z_RAW("Receiver process initialized (PID: %d)\n", getpid());
-    Z_RAW("Shared Memory IDs - FIFO: %d, Data: %d\n", 
-          shm.shm_id_fifo, shm.shm_id_data);
+    Z_RAW("Shared Memory ID: %d\n", shm.shm_id);
 
     while (1) {
         struct packet_header header;
